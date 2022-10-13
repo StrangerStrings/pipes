@@ -1,23 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Tile from './Tile';
+
+type TileData = {
+  x: number;
+  y: number;
+}
+
+const generateTiles = (width: number, height: number): TileData[] => {
+  const tiles: TileData[] = [];
+  for (let x = 0; x < width; x++) {
+    for (let y = 0; y < height; y++) {
+      tiles.push({x, y});
+    }
+  }
+  return tiles;
+}
+
+const initialTiles: TileData[] = generateTiles(4,3);
 
 function App() {
+  
+  const [tileData, setTiles] = useState(initialTiles);
+
+  const tiles: JSX.Element[] = [];
+  
+  for (let y = 0; y < tileData.length/4; y++) {
+    const row: JSX.Element[] = [];
+    for (let x = 0; x < 4; x++) {
+      row.push(<Tile/>);
+    }
+    tiles.push(<div className="row">{row}</div>)
+  }
+
+  const newGrid = () => {
+    setTiles(generateTiles(4,1));
+  } 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="grid" onClick={newGrid}>
+        {tiles}
       </header>
     </div>
   );
