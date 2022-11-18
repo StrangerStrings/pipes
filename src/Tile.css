@@ -1,3 +1,46 @@
 .tile {
   border: 3px solid #3c70d9;
+  width: 12rem;
+  height: 12rem;
+}
+
+.pipe-container {
+  position: relative;
+  height: 100%;
+}
+
+.pipe {
+  position: absolute;
+  width: 33.3%;
+  height: 33.3%;
+  background: #4e8dc4;
+}
+
+.center {
+  left: 33.3%;
+  top: 33.3%;
+}
+
+.north {
+  left: 33.3%;
+  top: 0;
+  height: 35%;
+}
+
+.east {
+  right: 0;
+  top: 33.3%;
+  width: 35%;
+}
+
+.south {
+  left: 33.3%;
+  bottom: 0;
+  height: 35%;
+}
+
+.west {
+  left: 0;
+  top: 33.3%;
+  width: 35%;
 }
